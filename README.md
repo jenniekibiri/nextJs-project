@@ -17,6 +17,6 @@ npm run dev
 7. nesting routes
 8. bootstrapping
 9. useState/useEffect
-
+10. styling
 coming from a react background, next js is awesome.
 🚀 this is development made fast.
