@@ -1,4 +1,6 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
+
 import React, { useEffect } from "react";
 
 const Blogs = () => {
@@ -11,7 +13,7 @@ const Blogs = () => {
   useEffect(() => {
     fetchPosts();
   }, []);
-  console.log(posts);
+  const router = useRouter();
   return (
     <div>
       <Head>
@@ -23,18 +25,21 @@ const Blogs = () => {
         <div className="row">
           {posts.map((post) => (
             <div className="col-md-4" key={post.id}>
-              <div class="card" style={{ width: "18rem" }}>
+              <div className="card" style={{ width: "18rem" }}>
                 <img
                   src={post.image.url}
-                  class="card-img-top"
+                  className="card-img-top"
                   alt={post.image.url}
                 />
-                <div class="card-body">
-                  <h5 class="card-title">{post.name}</h5>
-                  <p class="card-text">{post.body.substring(0, 120)} ...</p>
-                  <a href="#" class="btn btn-primary">
+                <div className="card-body">
+                  <h5 className="card-title">{post.name}</h5>
+                  <p className="card-text">{post.body.substring(0, 120)} ...</p>
+                  <button
+                    onClick={()=>router.push(`/blog/${post.id}`)}
+                    className="btn btn-primary"
+                  >
                     Read More
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -44,4 +49,4 @@ const Blogs = () => {
     </div>
   );
 };
-export default Blog;
+export default Blogs;
