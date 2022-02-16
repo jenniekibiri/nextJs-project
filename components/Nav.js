@@ -1,12 +1,40 @@
-import React from 'react'
+import React from "react";
+import Link from 'next/link'
+import styles from '.././styles/Nav.module.css'
 
- const Nav = () => {
+const Nav = () => {
   return (
-<nav className="navbar navbar-light bg-light">
-  <div className="container-fluid">
-    <span className="navbar-brand mb-0 h1">Blog Home</span>
-  </div>
-</nav>
-  )
-}
-export default Nav
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        <a className="navbar-brand" href="#">
+          Navbar
+        </a>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+            <a className="nav-link"  href="/">Home</a>
+            </li>
+
+            <li className="nav-item">
+              <a className="nav-link"  href="/blog">
+               Blog
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
+};
+export default Nav;
