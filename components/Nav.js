@@ -1,13 +1,13 @@
 import React from "react";
-import Link from 'next/link'
-import styles from '.././styles/Nav.module.css'
+import Link from "next/link";
+import styles from ".././styles/Nav.module.css";
 
 const Nav = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
-          Navbar
+          simple blog
         </a>
         <button
           className="navbar-toggler"
@@ -23,12 +23,14 @@ const Nav = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-            <a className="nav-link"  href="/">Home</a>
+              <a className="nav-link" href="/">
+                Home
+              </a>
             </li>
 
             <li className="nav-item">
-              <a className="nav-link"  href="/blog">
-               Blog
+              <a className="nav-link" href="/blog">
+                Blog
               </a>
             </li>
           </ul>
