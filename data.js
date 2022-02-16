@@ -22,7 +22,7 @@ export const blogs = [
   {
     id: 3,
     name: "amet consectetur adipisicing elit",
-    
+
     image: {
       url: "https://picsum.photos/200/300?random=6",
       alt: "blog image",
@@ -32,7 +32,7 @@ export const blogs = [
   },
   {
     id: 4,
-      name: "laudantium atque esse itaque.",
+    name: "laudantium atque esse itaque.",
     image: {
       url: "https://picsum.photos/200/300?random=4",
       alt: "blog image",
