@@ -1,7 +1,9 @@
 import React from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import Nav from "../components/Nav";
+import Footer from "../components/Footer";
+import Blog from "./blog";
+import DefaultLayout from "../layouts/Default";
 
 const Home = () => {
   return (
@@ -11,12 +13,13 @@ const Home = () => {
         <link rel="icon" href="/blog.png" />
         <meta property="og:title" content="blog home" key="title" />
       </Head>
-      <Nav />
-      <main>
-        <div className={styles.container}>
-          <h1 class="text-primary">Hello Next.js</h1>
+     <DefaultLayout>
+     <div className={styles.container}>
+          <Blog />
         </div>
-      </main>
+     
+     </DefaultLayout>
+     <Footer />
     </div>
   );
 };

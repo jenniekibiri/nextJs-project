@@ -1,67 +1,52 @@
-import Head from 'next/head'
-import React from 'react'
-import DefaultLayout from '../../layouts/Default'
-import Link from 'next/link'
+import Head from "next/head";
+import { useRouter } from "next/router";
 
- const Blog = () => {
+import React, { useEffect } from "react";
+
+const Blogs = () => {
+  const [posts, setPosts] = React.useState([]);
+  const fetchPosts = async () => {
+    const response = await fetch("/api/blogs");
+    const data = await response.json();
+    setPosts(data);
+  };
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+  const router = useRouter();
   return (
     <div>
       <Head>
         <title>Blog Home</title>
         <meta property="og:title" content="blog home" key="title" />
       </Head>
-     
-      <DefaultLayout>
-        <div className="container mt-5">
-          <div className="row">
-            <div className="col-md-8">
-            <p className="lead">
-          <Link className="btn btn-primary btn-lg" href="/" role="button">
-            home
-          </Link>
-        </p>
-              <h1 className="text-primary">Hello Next.js</h1>
-              <p> lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                doloremque. .lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-              </p>
-            </div>
-            <div className="col-md-8">
-              <h1 className="text-primary">Hello Next.js</h1>
-              <p> lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                doloremque. .lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-              </p>
-            </div>
-            <div className="col-md-8">
-              <h1 className="text-primary">Hello Next.js</h1>
-              <p> lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                doloremque. .lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-              </p>
-            </div>
 
-            <div className="col-md-8">
-              <h1 className="text-primary">Hello Next.js</h1>
-              <p> lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                doloremque. .lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-              </p>
+      <div className="container mt-5">
+        <div className="row">
+          {posts.map((post) => (
+            <div className="col-md-4" key={post.id}>
+              <div className="card" style={{ width: "18rem" }}>
+                <img
+                  src={post.image.url}
+                  className="card-img-top"
+                  alt={post.image.url}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">{post.name}</h5>
+                  <p className="card-text">{post.body.substring(0, 120)} ...</p>
+                  <button
+                    onClick={()=>router.push(`/blog/${post.id}`)}
+                    className="btn btn-primary"
+                  >
+                    Read More
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="col-md-8">
-              <h1 className="text-primary">Hello Next.js</h1>
-              <p> lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                doloremque. .lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-              </p>
-            </div>
-            <div className="col-md-8">
-              <h1 className="text-primary">Hello Next.js</h1>
-              <p> lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-                doloremque. .lorem ipsum dolor sit amet consectetur adipisicing elit. Quia,
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
-
-      </DefaultLayout>
-    
+      </div>
     </div>
-  )
-}
-export default Blog
+  );
+};
+export default Blogs;
