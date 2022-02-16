@@ -1,8 +1,7 @@
 import Head from "next/head";
 import React, { useEffect } from "react";
-import DefaultLayout from "../../layouts/Default";
 
-const Blog = () => {
+const Blogs = () => {
   const [posts, setPosts] = React.useState([]);
   const fetchPosts = async () => {
     const response = await fetch("/api/blogs");
